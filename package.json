@@ -1,0 +1,28 @@
+{
+  "name": "Fifteen Puzzle Game",
+  "version": "1.0.0",
+  "description": "The classic Fifteen Puzzle Game made with Vanilla JavaScript.",
+  "main": "fifteen-puzzle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Manussakis/fifteen-puzzle-game"
+  },
+  "keywords": [
+    "game", "javascript", "mvc", "puzzle"
+  ],
+  "author": "Gabriel Manussakis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manussakis/fifteen-puzzle-game/issues"
+  },
+  "homepage": "https://ofcode.com.br/projects/fifteen-puzzle-game/",
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.1"
+  }
+}
