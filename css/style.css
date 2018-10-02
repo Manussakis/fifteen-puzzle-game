@@ -258,7 +258,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .piece:hover:last-child {
-  background-color: transparent;
+  background-color: none;
 }
 
 .piece:last-child {
