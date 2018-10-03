@@ -34,6 +34,7 @@ var Model = {
 		this.isModalOpen = false;
 		this.modalHeaderMsg = '';
 		this.modalBodyMsg = '';
+		this.isBoardShuffling = false;
 
 		this.createFinalPositionsArr();
 	},
@@ -76,6 +77,10 @@ var Model = {
 		this.isBoardBlocked = !this.isBoardBlocked;
 	},
 
+	toggleBoardShuffling: function() {
+		this.isBoardShuffling = !this.isBoardShuffling;
+	},
+
 	/**
 	 * Create the message that the user will see after finish organizing the board.
 	 */
@@ -103,11 +108,11 @@ var Model = {
 	 * Store in an array all possibilities of moviments of each position.
 	 *
 	 * @example
-	 * The piece that are in position 1 can move just to right(1), left(-1) and down(3),
-	 * considering that 3 is the number of pieces per row.
+	 * The piece that are in position 1 can move just to right(1), left(-1) and down(4),
+	 * assuming 4 the number of pieces per row.
 	 * [
-	 *		{ currentPiece: 0, possibleMoviments: [ 1, 3 ] },
-	 *		{ currentPiece: 1, possibleMoviments: [ 1, -1, 3 ] },
+	 *		{ currentPiece: 0, possibleMoviments: [ 1, 4 ] },
+	 *		{ currentPiece: 1, possibleMoviments: [ 1, -1, 4 ] },
 	 *		{ ... },
 	 * ]
 	 */
@@ -340,7 +345,7 @@ var View = {
 	 */
 	selectPieceToMove: function( ev ) {
 
-		if ( Controller.isBoardBlocked() ) {
+		if ( Controller.isBoardBlocked() || Controller.isBoardShuffling() ) {
 			return;
 		}
 
@@ -541,6 +546,8 @@ var Controller = {
 
 		var self = this;
 
+		Model.toggleBoardShuffling();
+
 		var animeShuffle = setInterval( function() {
 
 			if ( currentTime !== times ) {
@@ -573,6 +580,8 @@ var Controller = {
 				clearInterval( animeShuffle );
 
 				Model.shuffledBoardArr( arr );
+
+				Model.toggleBoardShuffling();
 			}
 
 		}, 40 );
@@ -611,6 +620,15 @@ var Controller = {
 	 */
 	isBoardBlocked: function() {
 		return Model.isBoardBlocked;
+	},
+
+	/**
+	 * Return the data that represents if the board is sguffling.
+	 *
+	 * @return {boolean}
+	 */
+	isBoardShuffling: function() {
+		return Model.isBoardShuffling;
 	},
 
 	/**
