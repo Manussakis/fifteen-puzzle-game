@@ -44,7 +44,7 @@ var Model = {
 	 * where the index represents the position and the element the piece number.
 	 *
 	 * @example
-	 * [0,1,2,3,4,5,6,7,8,9]
+	 * [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 	 */
 	createFinalPositionsArr: function() {
 		for ( var i = 0; i < this.getPiecesLength(); i++ ) {
@@ -155,7 +155,7 @@ var Model = {
 	 * to render the shuffled board.
 	 *
 	 * @example
-	 * [ 7,8,0,1,4,2,3,6,5 ]
+	 * [ 0,13,1,5,4,6,7,15,8,14,2,10,9,12,3,11 ]
 	 *
 	 * @param {array} arr - The Model.indexesPossibleMovimentsList shuffled
 	 */
@@ -225,6 +225,15 @@ var View = {
 
 		this.$shuffleInput.addEventListener( 'blur', function () {
 			Controller.setShuffleTimes( Number( self.getImputVal() ) );
+		} );
+
+		this.$shuffleInput.addEventListener( 'keydown', function ( ev ) {
+			if ( ev.keyCode === 13 ) {
+				ev.preventDefault();
+				Controller.setShuffleTimes( Number( self.getImputVal() ) );
+				Controller.startGame.call( Controller );
+				this.blur();
+			}
 		} );
 
 		this.$playBtns.forEach( function( el ) {
@@ -371,7 +380,7 @@ var View = {
 			Controller.checkBoardState( elIndex )
 
 		} else {
-			console.log( 'Peça travada.' );
+			// Some alert to the user
 		}
 	},
 
@@ -509,6 +518,7 @@ var Controller = {
 	 * Make the game ready to be played.
 	 */
 	startGame: function() {
+		if ( Model.isBoardShuffling ) return;
 		if ( Model.isModalOpen ) this.toggleModal();
 		if ( Model.isBoardBlocked ) this.toggleBoardLock( Model.isBoardBlocked );
 		Model.populateListOfPossibleChanges();
@@ -532,8 +542,8 @@ var Controller = {
 	 *
 	 * @example
 	 * [
-	 *		{ currentPiece: 3, possibleMoviments: [ 1, 3 ] },
-	 *		{ currentPiece: 1, possibleMoviments: [ 1, -1, 3 ] },
+	 *		{ currentPiece: 4, possibleMoviments: [ 1, 4 ] },
+	 *		{ currentPiece: 1, possibleMoviments: [ 1, -1, 4 ] },
 	 *		{ ... },
 	 * ]
 	 */
@@ -665,7 +675,7 @@ var Controller = {
 	 */
 	getShuffleTimes: function() {
 		return Model.shuffleTimes;
-	},
+	}
 };
 
 Controller.init();
