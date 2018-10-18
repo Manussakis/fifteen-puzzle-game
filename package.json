@@ -1,5 +1,5 @@
 {
-  "name": "Fifteen Puzzle Game",
+  "name": "fifteen-puzzle-game",
   "version": "1.0.0",
   "description": "The classic Fifteen Puzzle Game made with Vanilla JavaScript.",
   "main": "fifteen-puzzle.js",
