@@ -16,6 +16,14 @@ export default class View {
 	}
 
   /**
+   * @param {Function} handler - Callback event function.
+   */
+  bindRenderBoard ( handler ) {
+    $on( window, 'resize', handler );
+    $on( window, 'orientationchange', handler );
+  }
+
+  /**
 	 * @param {Function} handler - Callback event function.
 	 */
   bindCloseModalPressingEsc ( handler ) {

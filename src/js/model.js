@@ -171,23 +171,14 @@ export default class Model {
 		this.currentPositionsArr[ indexOfPiecePos ] = this.getPiecesLength() - 1;
 	}
 
-	/**
-	 * Just increment.
-	 */
 	incrementUserMovements () {
 		this.userMovements++;
 	}
 
-	/**
-	 * Back it to the number to zero.
-	 */
 	resetUserMovements () {
 		this.userMovements = 0;
 	}
 
-	/**
-	 * Just toggle the modal state.
-	 */
 	toggleModalState () {
 		this.isModalOpen = !this.isModalOpen;
 	}

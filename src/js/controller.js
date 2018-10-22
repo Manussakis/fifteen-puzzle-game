@@ -11,6 +11,8 @@ export default class Controller {
 		view.bindToggleModal( this.toggleModal.bind( this ) );
 		view.bindCloseModalOutsideClick( this.closeModalOutsideClick.bind( this ) );
 		view.bindCloseModalPressingEsc( this.closeModalPressingEsc.bind( this ) );
+		view.bindRenderBoard( this.renderBoard.bind( this ) );
+
 		view.setInputVal( this.getShuffleTimes() );
 
 		this.render();
@@ -26,11 +28,6 @@ export default class Controller {
 		$writeInnerHTML( this.view.$minVal, this.model.minTimes );
 		this.view.alocatePieces( this.model.finalPositionsArr, this.model.baseNumber, this.model.getPieceSize(), this.model.gutterSize );
 		this.toggleBoardLock();
-
-		[ 'resize', 'orientationchange' ].forEach( eventName => {
-			window.addEventListener( eventName, this.renderBoard.bind( this ) );
-		} );
-
 	}
 
 	closeModalPressingEsc ( ev ) {
@@ -39,9 +36,6 @@ export default class Controller {
 		}
 	}
 
-	/**
-	 * Close modal by clicking outside.
-	 */
 	closeModalOutsideClick ( ev ) {
 		if ( ev.target === ev.currentTarget ) {
 			this.toggleModal();
@@ -61,8 +55,7 @@ export default class Controller {
 	}
 
 	/**
-	* Pass the board width as a paramenter to adjust
-	* its height.
+	* Make sure the board are square
 	*/
 	renderBoard () {
 		this.view.adjustBoardHeight( this.getBoardSize() );
@@ -119,7 +112,7 @@ export default class Controller {
 			this.checkBoardState( elIndex )
 
 		} else {
-			// Some alert to the user
+			// Some alert to the user if clicked on a blocked piece
 		}
 	}
 
