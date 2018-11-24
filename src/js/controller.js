@@ -192,20 +192,20 @@ export default class Controller {
 
 			if ( currentTime !== times ) {
 				// Fiter possibleMoviments in order to prevent the piece to back to the last position
-				var possibleMoviments = arr[ index ].possibleMoviments.filter( function( el ) {
+				let possibleMoviments = arr[ index ].possibleMoviments.filter( function( el ) {
 					return el !== moviment * -1;
 				} );
 
-				// Take randomly one movimento to apply
+				// Take randomly one movement to apply
 				moviment = possibleMoviments[ Math.floor( Math.random() * possibleMoviments.length ) ];
 
-				var newIndex = index + moviment;
+				let newIndex = index + moviment;
 
 				this.view.movePiece( arr[ newIndex ].number );
 
-				var blankNumberCopy = arr[ index ].number;
+				let blankNumberCopy = arr[ index ].number;
 
-				var pieceNumberCopy = arr[ newIndex ].number;
+				let pieceNumberCopy = arr[ newIndex ].number;
 
 				arr[ index ].number = pieceNumberCopy;
 
