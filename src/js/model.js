@@ -79,16 +79,19 @@ export default class Model {
 		if ( this.userMovements < this.shuffleTimes ) {
 			this.modalHeaderMsg = `<h2 class="${className}">Amazing!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
 			this.modalBodyMsg = `<span class="bold">${dif} movements</span> less than the board was shuffled.`;
+			return;
 
-		} else if ( this.userMovements === this.shuffleTimes ) {
+		}
+
+		if ( this.userMovements === this.shuffleTimes ) {
 			this.modalHeaderMsg = `<h2 class="${className}">Congrats!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
 			this.modalBodyMsg = 'The same number of movements that the board was shuffled.';
-
-		} else {
-			className = 'color-fail';
-			this.modalHeaderMsg = `<h2 class="${className}">Ops!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
-			this.modalBodyMsg = `<span class="bold">${dif} movements</span> more than the board was shuffled.`;
+			return;
 		}
+
+		className = 'color-fail';
+		this.modalHeaderMsg = `<h2 class="${className}">Ops!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
+		this.modalBodyMsg = `<span class="bold">${dif} movements</span> more than the board was shuffled.`;
 	}
 
 	/**
@@ -104,10 +107,10 @@ export default class Model {
 	 * ]
 	 */
 	populateListOfPossibleChanges () {
-		const right = this.direction.right;
-		const left = this.direction.left;
-		const down = this.direction.down;
 		const up = this.direction.up;
+		const right = this.direction.right;
+		const down = this.direction.down;
+		const left = this.direction.left;
 		const num = this.baseNumber;
 		const len = this.getPiecesLength();
 
@@ -117,17 +120,17 @@ export default class Model {
 
 			let currentList = [];
 
-			// Can move to right
-			if( ( i + right ) % num > 0 ) currentList.push( right );
-
-			// Can move to left
-			if( ( i + left ) % num >= 0  && (i + left ) % num < ( num - 1 ) ) currentList.push( left );
-
 			// Can move to up
 			if( i + up >= 0 ) currentList.push( up );
 
+			// Can move to right
+			if( ( i + right ) % num > 0 ) currentList.push( right );
+
 			// Can move to down
 			if( i + down < len ) currentList.push( down );
+
+			// Can move to left
+			if( ( i + left ) % num >= 0  && (i + left ) % num < ( num - 1 ) ) currentList.push( left );
 
 			this.indexesPossibleMovimentsList.push( {
 				number: i,
