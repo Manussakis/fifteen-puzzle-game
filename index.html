@@ -1,78 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fifteen Puzzle Game</title>
-    <meta name="description" content="Rearrange the pieces in order with as fewer moves as possible.">
-    <meta name="keywords" content="15-puzzle, grid layout, javascript, game, web design" />
-		<meta name="author" content="Gabriel Manussakis" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css">
-    <link rel="stylesheet" href="./dist/css/style.css">
-  </head>
-  <body>
-    <header class="header">
-      <div class="container">
-        <div class="wrapper">
-          <h1>Fifteen Puzzle Game</h1>
-          <p class="subheading">Rearrange the pieces in order with as fewer moves as possible.</p>
-          <h3>Instructions:</h3>
-          <ol>
-            <li>Type how many moves you want the board to be shuffled with (any value between <span id="min-val" class="bold"></span> and <span id="max-val" class="bold"></span>).</li>
-            <li>Click shuffle button and see the pieces shuffling.</li>
-            <li>Rearrange the board with the same (or even fewer) number of moves that it was shuffled by clicking the pieces that has space to move. The pieces should be in ascending order from left to right, up to down.</li>
-          </ol>
-        </div>
-      </div>
-    </header>
 
-    <main>
-      <div class="container">
-        <header class="boardbar">
-          <div class="boardbar__control">
-            <label class="label">shuffle moves</label>
-            <input id="shuffle-input" class="field" type="number">
-            <button id="shuffle-btn" class="btn btn--primary btn--lg play-game" type="button" name="button">Shuffle</button>
-          </div>
-          <div>
-            <label class="label">Your moves</label>
-            <div id="counter" class="counter">0</div>
-          </div>
-        </header>
-        <div id="board" class="board"></div>
-      </div>
-    </main>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>Fifteen Puzzle Game</title>
+  <meta name="description" content="Rearrange the pieces in order with as fewer moves as possible." />
+  <meta name="keywords" content="15-puzzle, grid layout, javascript, game, web design" />
+  <meta name="author" content="Gabriel Manussakis" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css">
+  <link rel="stylesheet" href="./dist/css/style.css">
 
-    <footer class="footer">
-      <div class="container center">
-        <a href="https://github.com/Manussakis/fifteen-puzzle-game" target="_blank" class="btn btn--lg btn--secondary">
-          <span class="btn__icon"><svg viewBox="0 0 24 24"><path d="M12,2.2c-5.5,0-10,4.5-10,10c0,4.4,2.9,8.2,6.8,9.5c0.5,0.1,0.7-0.2,0.7-0.5c0-0.2,0-0.9,0-1.7c-2.8,0.6-3.4-1.3-3.4-1.3 C5.7,17.1,5,16.7,5,16.7c-0.9-0.6,0.1-0.6,0.1-0.6c1,0.1,1.5,1,1.5,1C7.5,18.7,9,18.2,9.5,18c0.1-0.6,0.4-1.1,0.6-1.3 c-2.2-0.2-4.6-1.1-4.6-4.9c0-1.1,0.4-2,1-2.7C6.6,8.8,6.2,7.7,6.8,6.4c0,0,0.8-0.3,2.8,1c0.8-0.2,1.6-0.3,2.5-0.3s1.7,0.1,2.5,0.3 c1.9-1.3,2.8-1,2.8-1c0.5,1.3,0.2,2.4,0.1,2.6c0.6,0.7,1,1.6,1,2.7c0,3.8-2.3,4.7-4.6,4.9c0.4,0.3,0.7,0.9,0.7,1.9 c0,1.3,0,2.4,0,2.7c0,0.3,0.2,0.6,0.7,0.5c4-1.3,6.8-5.1,6.8-9.5C22,6.7,17.5,2.2,12,2.2z"/></svg></span>
-          Github
-        </a>
-        <div class="colophon">
-          Made with JavaScript by <a href="https://github.com/Manussakis" target="_blank">Gabiel Manussakis</a><br>
-          Learn more about the <a href="https://en.wikipedia.org/wiki/15_puzzle" target="_blank">Fifteen Puzzle on Wikipedia</a>.
-        </div>
-      </div>
-    </footer>
+  <!-- Share  -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:url" content="https://ofcode.com.br/projects/fifteen-puzzle-game/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Fifteen Puzzle Game" />
+  <meta property="og:description" content="Rearrange the pieces in order with as fewer moves as possible." />
+  <meta property="og:image" content="https://ofcode.com.br/projects/fifteen-puzzle-game/assets/fifteen-puzzle-game.png" />
+  <meta property="og:site_name" content="Fifteen Puzzle Game" />
 
-    <div id="modal" class="modal">
-      <div class="modal__wrap">
-        <div class="modal__close close-modal">
-          <svg viewBox="0 0 24 24"><polygon points="19.7,5.7 18.3,4.3 12,10.6 5.7,4.3 4.3,5.7 10.6,12 4.3,18.3 5.7,19.7 12,13.4 18.3,19.7 19.7,18.3 13.4,12 "/></svg>
-        </div>
-        <header id="modal-header" class="modal__header">
-        </header>
-        <div id="modal-body" class="modal__body">
-          You reorganized the board with 10 moves more than the necessary.
-        </div>
-        <footer class="modal__footer">
-          <button type="button" class="btn btn--terciary btn--sm close-modal" name="button">Close</button>
-          <button type="button" class="btn btn--primary btn--sm play-game" name="button">Play again</button>
-        </footer>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@0fc0de" />
+  <meta name="twitter:title" content="Fifteen Puzzle Game" />
+  <meta name="twitter:description" content="Rearrange the pieces in order with as fewer moves as possible." />
+  <meta name="twitter:image" content="https://ofcode.com.br/projects/fifteen-puzzle-game/assets/fifteen-puzzle-game.png" />
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="https://ofcode.com.br/projects/fifteen-puzzle-game/assets/apple-touch-icon.png">
+
+  <!-- To run web application in full-screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Status Bar Style (see Supported Meta Tags below for available values) -->
+  <!-- Has no effect unless you have the previous meta tag -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="wrapper">
+        <h1>Fifteen Puzzle Game</h1>
+        <p class="subheading">Rearrange the pieces in order with as fewer moves as possible.</p>
+        <h3>Instructions:</h3>
+        <ol>
+          <li>Type how many moves you want the board to be shuffled with (any value between <span id="min-val"
+              class="bold"></span> and <span id="max-val" class="bold"></span>).</li>
+          <li>Click shuffle button and see the pieces shuffling.</li>
+          <li>Rearrange the board with the same (or even fewer) number of moves that it was shuffled by clicking the
+            pieces that has space to move. The pieces should be in ascending order from left to right, up to down.</li>
+        </ol>
       </div>
     </div>
-    <script type="text/javascript" src="./dist/js/main.js"></script>
-  </body>
+  </header>
+
+  <main>
+    <div class="container">
+      <header class="boardbar">
+        <div class="boardbar__control">
+          <label class="label">shuffle moves</label>
+          <input id="shuffle-input" class="field" type="number">
+          <button id="shuffle-btn" class="btn btn--primary btn--lg play-game" type="button"
+            name="button">Shuffle</button>
+        </div>
+        <div>
+          <label class="label">Your moves</label>
+          <div id="counter" class="counter">0</div>
+        </div>
+      </header>
+      <div id="board" class="board"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container center">
+      <a href="https://github.com/Manussakis/fifteen-puzzle-game" target="_blank" class="btn btn--lg btn--secondary">
+        <span class="btn__icon"><svg viewBox="0 0 24 24">
+            <path
+              d="M12,2.2c-5.5,0-10,4.5-10,10c0,4.4,2.9,8.2,6.8,9.5c0.5,0.1,0.7-0.2,0.7-0.5c0-0.2,0-0.9,0-1.7c-2.8,0.6-3.4-1.3-3.4-1.3 C5.7,17.1,5,16.7,5,16.7c-0.9-0.6,0.1-0.6,0.1-0.6c1,0.1,1.5,1,1.5,1C7.5,18.7,9,18.2,9.5,18c0.1-0.6,0.4-1.1,0.6-1.3 c-2.2-0.2-4.6-1.1-4.6-4.9c0-1.1,0.4-2,1-2.7C6.6,8.8,6.2,7.7,6.8,6.4c0,0,0.8-0.3,2.8,1c0.8-0.2,1.6-0.3,2.5-0.3s1.7,0.1,2.5,0.3 c1.9-1.3,2.8-1,2.8-1c0.5,1.3,0.2,2.4,0.1,2.6c0.6,0.7,1,1.6,1,2.7c0,3.8-2.3,4.7-4.6,4.9c0.4,0.3,0.7,0.9,0.7,1.9 c0,1.3,0,2.4,0,2.7c0,0.3,0.2,0.6,0.7,0.5c4-1.3,6.8-5.1,6.8-9.5C22,6.7,17.5,2.2,12,2.2z" />
+            </svg></span>
+        Github
+      </a>
+      <div class="colophon">
+        Made with JavaScript by <a href="https://github.com/Manussakis" target="_blank">Gabiel Manussakis</a><br>
+        Learn more about the <a href="https://en.wikipedia.org/wiki/15_puzzle" target="_blank">Fifteen Puzzle on
+          Wikipedia</a>.
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal__wrap">
+      <div class="modal__close close-modal">
+        <svg viewBox="0 0 24 24">
+          <polygon
+            points="19.7,5.7 18.3,4.3 12,10.6 5.7,4.3 4.3,5.7 10.6,12 4.3,18.3 5.7,19.7 12,13.4 18.3,19.7 19.7,18.3 13.4,12 " />
+          </svg>
+      </div>
+      <header id="modal-header" class="modal__header">
+      </header>
+      <div id="modal-body" class="modal__body">
+        You reorganized the board with 10 moves more than the necessary.
+      </div>
+      <footer class="modal__footer">
+        <button type="button" class="btn btn--terciary btn--sm close-modal" name="button">Close</button>
+        <button type="button" class="btn btn--primary btn--sm play-game" name="button">Play again</button>
+      </footer>
+    </div>
+  </div>
+  <script type="text/javascript" src="./dist/js/main.js"></script>
+</body>
+
 </html>

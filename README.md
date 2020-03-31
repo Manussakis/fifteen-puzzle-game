@@ -1,4 +1,4 @@
-[![Fifteen Puzzle Game](src/assets/fifteen-puzzle-game.png)](https://ofcode.com.br/projects/fifteen-puzzle-game/)
+[![Fifteen Puzzle Game](assets/fifteen-puzzle-game.png)](https://ofcode.com.br/projects/fifteen-puzzle-game/)
 
 Fifteen Puzzle Game
 ===================
