@@ -11,7 +11,7 @@ export default class Model {
 		this.userMovements = 0;
 		this.minTimes = 1;
 		this.maxTimes = 80;
-		this.shuffleTimes = this.maxTimes;
+		this.shuffleTimes = 20;
 		this.direction = {
 			right: 1,
 			left: -1,
