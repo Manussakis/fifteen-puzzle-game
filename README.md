@@ -20,4 +20,4 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 ### [Play the game](https://ofcode.com.br/projects/fifteen-puzzle-game)
 
-Learn more about the [Fifteen Puzzle on Wikipedia](https://en.wikipedia.org/wiki/15_puzzle)
+Learn more about the [Fifteen Puzzle on Wikipedia](https://en.wikipedia.org/wiki/15_puzzle).
