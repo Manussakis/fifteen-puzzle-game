@@ -8,9 +8,10 @@ module.exports = {
         './src/index.js',
     ],
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
-        assetModuleFilename: "./assets/[name][ext]"
+        filename: "[name].js",
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "./",
+        assetModuleFilename: "assets/[name][ext]"
     },
     module: {
         rules: [
