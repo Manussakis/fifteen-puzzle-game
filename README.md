@@ -2,6 +2,7 @@
 
 Fifteen Puzzle Game
 ===================
+
 ### Rearrange the pieces in order with as fewer moves as possible.
 
 **Instructions:**
