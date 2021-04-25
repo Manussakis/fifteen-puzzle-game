@@ -9,9 +9,14 @@ Fifteen Puzzle Game
 2. Click shuffle button and see the pieces shuffling.
 3. Try to rearrange the board with the same (or even fewer) number of moves that it was shuffled by clicking the pieces that has space to move. The pieces should be in ascending order from left to right, up to down.
 
-### Build
-Run `npm run webpack` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Development
 
-### Learn more about the [Fifteen Puzzle on Wikipedia](https://en.wikipedia.org/wiki/15_puzzle)
+Run `npm run start` to start the server and open `http://localhost:8080` in browser. The site will reload automatically when changes in the source files are saved.
+
+### Build
+
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ### [Play the game](https://ofcode.com.br/projects/fifteen-puzzle-game)
+
+Learn more about the [Fifteen Puzzle on Wikipedia](https://en.wikipedia.org/wiki/15_puzzle)
