@@ -7,12 +7,6 @@ module.exports = {
     entry: [
         './src/index.js',
     ],
-    output: {
-        filename: "[name].js",
-        path: path.resolve(__dirname, "dist"),
-        publicPath: "./",
-        assetModuleFilename: "assets/[name][ext]"
-    },
     module: {
         rules: [
             {
@@ -43,6 +37,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
+            filename: "index.html",
             template: "./src/index.html",
             inject: "body"
         })
