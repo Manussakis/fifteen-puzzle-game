@@ -73,25 +73,25 @@ export default class Model {
 	 */
 	updateModalMsg  () {
 		var className = 'color-success';
-		var movementTxt = this.userMovements <= 1 ? 'movement' : 'movements';
+		var movementTxt = this.userMovements <= 1 ? 'move' : 'moves';
 		var dif = Math.abs( this.shuffleTimes - this.userMovements );
 
 		if ( this.userMovements < this.shuffleTimes ) {
 			this.modalHeaderMsg = `<h2 class="${className}">Amazing!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
-			this.modalBodyMsg = `<span class="bold">${dif} movements</span> less than the board was shuffled.`;
+			this.modalBodyMsg = `<span class="bold">${dif} moves</span> less than the number of moves the board was shuffled with.`;
 			return;
 
 		}
 
 		if ( this.userMovements === this.shuffleTimes ) {
 			this.modalHeaderMsg = `<h2 class="${className}">Congrats!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
-			this.modalBodyMsg = 'The same number of movements that the board was shuffled.';
+			this.modalBodyMsg = 'The exact number of moves as the board was shuffled with.';
 			return;
 		}
 
 		className = 'color-fail';
 		this.modalHeaderMsg = `<h2 class="${className}">Ops!<br> You did ${this.userMovements} ${movementTxt}.</h2>`;
-		this.modalBodyMsg = `<span class="bold">${dif} movements</span> more than the board was shuffled.`;
+		this.modalBodyMsg = `<span class="bold">${dif} moves</span> more than the number of moves the board was shuffled with.`;
 	}
 
 	/**
